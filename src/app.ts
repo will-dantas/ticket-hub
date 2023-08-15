@@ -1,5 +1,5 @@
-import express, { Application } from "express";
-import { connect } from "./infra/database";
+import express, { Application } from 'express';
+import { connect } from './infra/database';
 
 class App {
   public app: Application;
