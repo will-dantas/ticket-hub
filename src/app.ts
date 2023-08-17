@@ -1,9 +1,11 @@
 import express, { Application } from 'express';
 import { connect } from './infra/database';
 import { errorMiddleware } from './middlewares/error.middlewares';
+import { EventRouter } from './routes/event.routes';
 
-class App {
+export class App {
   public app: Application;
+  private eventRouter = new EventRouter();
   constructor() {
     this.app = express();
     this.middlewaresInitalize();
@@ -11,9 +13,9 @@ class App {
     this.interceptionError();
     connect();
   }
-  // 36:44
+  // 01:15
   initalizeRoutes() {
-    // this.app.use('/, )
+    this.app.use('/events', this.eventRouter.router);
   }
 
   interceptionError() {
@@ -29,8 +31,6 @@ class App {
     this.app.listen(3333, () => console.log('server is running'));
   }
 }
-
-export { App };
 
 
 
