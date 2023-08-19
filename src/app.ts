@@ -14,15 +14,15 @@ export class App {
     connect();
   }
   // 01:15
-  initalizeRoutes() {
+  private initalizeRoutes() {
     this.app.use('/events', this.eventRouter.router);
   }
 
-  interceptionError() {
+  private interceptionError() {
     this.app.use(errorMiddleware);
   }
 
-  middlewaresInitalize() {
+  private middlewaresInitalize() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   }
